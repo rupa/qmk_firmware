@@ -1,22 +1,6 @@
-/*
-Copyright 2020 rupa <rupa@lrrr.us> @rupa
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
 #pragma once
 #include QMK_KEYBOARD_H
+#include "quantum.h"
 #include "version.h"
 #include "process_records.h"
 #include "unicode.h"
@@ -27,9 +11,8 @@ enum userspace_layers {
 };
 
 enum userspace_custom_keycodes {
-    VRSN = SAFE_RANGE,
-    LOD,
-    RUPA,
+    LOD = SAFE_RANGE,
+    VRSN,
     U_FRACT,
     U_MONOS,
     U_SCRPT,
