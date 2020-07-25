@@ -1,6 +1,8 @@
 #include "rupa.h"
 
+#if defined(UNICODE_SCRIPT_MODE_ENABLE)
 font_t *translator = NULL;
+#endif
 
 __attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) { return true; }
 
@@ -21,6 +23,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 send_unicode_string((is_shifted ? "Śrīrūpa" : "rūpa"));
                 return false;
 
+#if defined(UNICODE_SCRIPT_MODE_ENABLE)
             // script modes
             case U_FRACT:
                 translator = (translator == &fraktu_bold ? NULL : &fraktu_bold);
@@ -30,6 +33,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return true;
             case U_MONOS:
                 translator = (translator == &monosp_bold ? NULL : &monosp_bold);
+                return true;
+            case U_NORML:
+                translator = (translator == &math_normal ? NULL : &math_normal);
                 return true;
             case U_SANSI:
                 translator = (translator == &sans_i_bold ? NULL : &sans_i_bold);
@@ -45,6 +51,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if (translator != NULL) {
                     return script_mode_translate(translator, is_shifted, keycode);
                 }
+#endif
             }
     }
     return true;

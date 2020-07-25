@@ -1,12 +1,14 @@
 #include <print.h>
 #include "rupa.h"
 
+#if defined(UNICODE_SCRIPT_MODE_ENABLE)
 // https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols
 font_t fraktu_bold = {0x1D56C, 0x1D586, 0x1D7D8}; // doublestruck numbers
 font_t italic_bold = {0x1D468, 0x1D482, 0x1D7CE}; // bold numbers
-font_t monosp_bold = {0x1D670, 0x1D68A, 0x1D7F6};
+font_t math_normal = {0x1D400, 0x1D41A, 0x00030}; // normal numbers!
+font_t monosp_bold = {0x1D670, 0x1D68A, 0x1D7F6}; // monospace numbers
 font_t sans_i_bold = {0x1D63C, 0x1D656, 0x1D7EC}; // sans bold numbers
-font_t sans_n_bold = {0x1D5D4, 0x1D5EE, 0x1D7EC};
+font_t sans_n_bold = {0x1D5D4, 0x1D5EE, 0x1D7E2}; // sans numbers
 font_t script_bold = {0x1D4D0, 0x1D4EA, 0x1D7CE}; // bold numbers
 
 /*
@@ -47,3 +49,4 @@ bool script_mode_translate(font_t *translator, bool is_shifted, uint32_t keycode
     register_unicode(translated);
     return false;
 }
+#endif

@@ -17,6 +17,7 @@ enum userspace_custom_keycodes {
     U_FRACT,
     U_ITALI,
     U_MONOS,
+    U_NORML,
     U_SANSI,
     U_SANSN,
     U_SCRPT,
@@ -30,6 +31,7 @@ typedef struct font_t {
 
 font_t fraktu_bold;
 font_t italic_bold;
+font_t math_normal;
 font_t monosp_bold;
 font_t sans_i_bold;
 font_t sans_n_bold;
