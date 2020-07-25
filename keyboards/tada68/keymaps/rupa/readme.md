@@ -2,7 +2,7 @@
 
 i've swapped the lufa-ms bootloader for caterina
 
-most everything is in my [userspace](../../../../rupa/)
+most everything is in my [userspace](../../../rupa/)
 
 * win/alt -> alt/cmd
 * alt/fn -> fn/alt
