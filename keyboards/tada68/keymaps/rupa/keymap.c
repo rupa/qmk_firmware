@@ -28,18 +28,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┼───┤
      * │     │VSN│U_s│U_f│U_m│U_n│   │uni│   │ ॐ │☻ ☺│♩ ♪│♫ ♬│★  ☆ │Ins│
      * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┼───┤
-     * │      │   │   │   │   │   │   │   │   │   │   │   │    ✓   │End│
+     * │      │   │   │   │   │   │   │   │   │   │   │   │ ✓  💯  │End│
      * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┬───┼───┤
-     * │ RShift │⸮ ⚠│Rup│Brt│Bls│Blt│   │Mut│V- │V+ │‽ ☭│   McL│M↑ │McR│
+     * │ RShift │⚠ ☭│Rup│Brt│Bls│Blt│   │Mut│V- │V+ │‽ ⸮│   McL│M↑ │McR│
      * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴──┬┴──┬┴──┬───┼───┼───┤
      * │RCtl│RAlt│RGui│                        │   │   │CAP│M← │M↓ │M→ │
      * └────┴────┴────┴────────────────────────┴───┴───┴───┴───┴───┴───┘
      */
     [_RAISE] = LAYOUT_65_ansi(
-        LOD,     KC_F1,   KC_F2,        KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,      KC_F11,       KC_F12,      KC_DEL,      KC_HOME,
-        _______, VRSN,    U_SCRPT,      U_FRACT, U_MONOS, U_NORML, _______, UC_MOD,  _______, X(OM),   XP(SMB,SMW), XP(M4,M8),    XP(M8B,M16), XP(STB,STW), KC_INS,
-        _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______, _______,     _______,                   X(CHEK),     KC_END,
-        OS_RSFT,          XP(IRNY,CUI), RUPA,    BL_BRTG, BL_STEP, BL_TOGG, _______, KC_MUTE, KC_VOLD, KC_VOLU,     XP(IBNG,HAS), KC_BTN1,     KC_MS_U,     KC_BTN2,
-        OS_RCTL, OS_RALT, OS_RGUI,                                 _______,                   _______, _______,     KC_CAPS,      KC_MS_L,     KC_MS_D,     KC_MS_R
+        LOD,     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_DEL,  KC_HOME,
+        _______, VRSN,    U_SCRPT, U_FRACT, U_MONOS, U_NORML, _______, UC_MOD,  _______, X(OM),   SMILE,   MUSIC_A, MUSIC_B, STARS,   KC_INS,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          YEPYEP,  KC_END,
+        OS_RSFT,          CUIDADO, RUPA,    BL_BRTG, BL_STEP, BL_TOGG, _______, KC_MUTE, KC_VOLD, KC_VOLU, HIPSTER, KC_BTN1, KC_MS_U, KC_BTN2,
+        OS_RCTL, OS_RALT, OS_RGUI,                            _______,                   _______, _______, KC_CAPS, KC_MS_L, KC_MS_D, KC_MS_R
     ),
 };
