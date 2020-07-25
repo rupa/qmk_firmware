@@ -19,6 +19,8 @@ const uint32_t PROGMEM unicode_map[] = {
     [M8B]  = 0x266B, // ♫
     [M16]  = 0x266C, // ♬
     [OM]   = 0x0950, // ॐ
+    [SMB]  = 0x263A, // ☻
+    [SMW]  = 0x263B, // ☺
     [STB]  = 0x2605, // ★
     [STW]  = 0x2606, // ☆
 };
