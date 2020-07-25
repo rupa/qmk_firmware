@@ -4,4 +4,4 @@
 * unicode.c has my unicode map
 * process_record.c has my keycode handler
 
-my keymap is in keyboards/tada68
+my keymap is in [keyboards/tada68](../../keyboards/tada68/keymaps/rupa/)
