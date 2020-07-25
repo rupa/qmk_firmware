@@ -3,6 +3,7 @@
 #if defined(UNICODEMAP_ENABLE)
 const uint32_t PROGMEM unicode_map[] = {
     [CHEK] = 0x2713, // ✓
+    [CUI]  = 0x26A0, // ⚠
     /*
     [DI1]  = 0x2680, // ⚀
     [DI2]  = 0x2681, // ⚁

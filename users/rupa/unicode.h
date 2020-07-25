@@ -5,6 +5,7 @@
 #if defined(UNICODEMAP_ENABLE)
 enum unicode_names {
     CHEK,
+    CUI,
     /*
     DI1, // ⚀
     DI2, // ⚁
