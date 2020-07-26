@@ -7,8 +7,8 @@ font_t *translator = NULL;
 __attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) { return true; }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    bool is_shifted = get_mods()&MOD_MASK_SHIFT;
     if (record->event.pressed) {
+        bool is_shifted = get_mods()&MOD_MASK_SHIFT;
         switch(keycode) {
             case VRSN:
                 send_string_with_delay_P(PSTR(
