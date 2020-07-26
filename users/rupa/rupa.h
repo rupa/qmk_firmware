@@ -12,6 +12,7 @@ enum userspace_layers {
 
 enum userspace_custom_keycodes {
     VRSN = SAFE_RANGE,
+    DICE,
     LOD,
     RUPA,
     U_FRACT,

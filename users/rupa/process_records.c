@@ -23,6 +23,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 send_unicode_string((is_shifted ? "Śrīrūpa" : "rūpa"));
                 return false;
 
+            case DICE:
+                send_unicode_string(d6());
+                return false;
+
 #if defined(UNICODE_SCRIPT_MODE_ENABLE)
             // script modes
             case U_FRACT:

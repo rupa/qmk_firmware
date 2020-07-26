@@ -1,17 +1,11 @@
 #include "unicode.h"
 
+bool _seeded = false;
+
 #if defined(UNICODEMAP_ENABLE)
 const uint32_t PROGMEM unicode_map[] = {
     [CHEK] = 0x2713,  // ✓
     [CUI]  = 0x26A0,  // ⚠
-    /*
-    [DI1]  = 0x2680,  // ⚀
-    [DI2]  = 0x2681,  // ⚁
-    [DI3]  = 0x2682,  // ⚂
-    [DI4]  = 0x2683,  // ⚃
-    [DI5]  = 0x2684,  // ⚄
-    [DI6]  = 0x2685,  // ⚅
-    */
     [HAS]  = 0x262D,  // ☭
     [HUN]  = 0x1F4AF, // 💯
     [IBNG] = 0x203D,  // ‽
@@ -27,3 +21,14 @@ const uint32_t PROGMEM unicode_map[] = {
     [STW]  = 0x2606,  // ☆
 };
 #endif
+
+const char *dice_map[] = { "⚀", "⚁", "⚂", "⚃", "⚄", "⚅" };
+
+const char *d6(void) {
+    if (_seeded == false) {
+        srand(timer_read32());
+        dprintf("_seeded the roll\n");
+        _seeded = true;
+    }
+    return dice_map[rand() % 6];
+}

@@ -37,3 +37,5 @@ enum unicode_names {
 #define SMILE   XP(SMB,SMW)
 #define STARS   XP(STB,STW)
 #define YEPYEP  XP(CHEK,HUN)
+
+const char *d6(void);
