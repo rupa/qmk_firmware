@@ -6,6 +6,7 @@
 enum unicode_names {
     CHEK, // ✓
     CUI,  // ⚠
+    ECKS, // ✖
     /*
     DI1,  // ⚀
     DI2,  // ⚁

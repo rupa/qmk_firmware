@@ -6,6 +6,7 @@ bool _seeded = false;
 const uint32_t PROGMEM unicode_map[] = {
     [CHEK] = 0x2713,  // ✓
     [CUI]  = 0x26A0,  // ⚠
+    [ECKS] = 0x2716,  // ✖
     [HAS]  = 0x262D,  // ☭
     [HUN]  = 0x1F4AF, // 💯
     [IBNG] = 0x203D,  // ‽
