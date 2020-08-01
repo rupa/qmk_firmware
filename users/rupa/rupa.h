@@ -1,6 +1,5 @@
 #pragma once
 #include QMK_KEYBOARD_H
-#include "quantum.h"
 #include "version.h"
 #include "process_records.h"
 #include "unicode.h"
@@ -24,21 +23,25 @@ enum userspace_custom_keycodes {
     U_SCRPT,
 };
 
+enum userspace_font_choices {
+    F_FRACT = 0,
+    F_ITALI,
+    F_MONOS,
+    F_NORML,
+    F_SANSI,
+    F_SANSN,
+    F_SCRPT,
+};
+
 typedef struct font_t {
     uint32_t upper_alpha;
     uint32_t lower_alpha;
     uint32_t zero_glyph;
 } font_t;
 
-font_t fraktu_bold;
-font_t italic_bold;
-font_t math_normal;
-font_t monosp_bold;
-font_t sans_i_bold;
-font_t sans_n_bold;
-font_t script_bold;
-
-bool script_mode_translate(font_t *translator, bool is_shifted, uint32_t keycode);
+const font_t* get_script_mode(void);
+bool set_script_mode(int fc);
+bool script_mode_translate(bool is_shifted, uint32_t keycode);
 
 #define RAISE   MO(_RAISE)
 #define OS_RGUI OSM(MOD_RGUI)
