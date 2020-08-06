@@ -4,7 +4,9 @@ __attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
+#if defined(UNICODEMAP_ENABLE) || defined(UNICODE_SCRIPT_MODE_ENABLE)
         bool is_shifted = get_mods()&MOD_MASK_SHIFT;
+#endif
         switch(keycode) {
             case VRSN:
                 send_string_with_delay_P(PSTR(
@@ -12,6 +14,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 ), TAP_CODE_DELAY);
                 return false;
 
+#if defined(UNICODEMAP_ENABLE)
             case LOD:
                 send_unicode_string((is_shifted ? "¯\\_(ツ)_/¯" : "ಠ_ಠ"));
                 return false;
@@ -22,6 +25,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case DICE:
                 send_unicode_string(d6());
                 return false;
+#endif
 
 #if defined(UNICODE_SCRIPT_MODE_ENABLE)
             // script modes
