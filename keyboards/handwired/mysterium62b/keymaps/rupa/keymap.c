@@ -83,6 +83,9 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         switch (get_highest_layer(layer_state)) {
             case _QWERTY:
+#ifdef OLED_DRIVER_ENABLE
+                oled_task_user();
+#endif
                 tap_code(clockwise ? KC_VOLU : KC_VOLD);
         }
     }
