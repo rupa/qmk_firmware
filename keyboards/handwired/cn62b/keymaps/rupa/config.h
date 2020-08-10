@@ -1,3 +1,5 @@
 #pragma once
 
+#define OLED_DISPLAY_128X64
+
 #undef UNICODE_SCRIPT_MODE_ENABLE
