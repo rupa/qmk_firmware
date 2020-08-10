@@ -104,14 +104,16 @@ static void render_keymap(void) {
                                   " tQWERT      YUIOP\" \n"\
                                   " ~ASDFG      HJKL:r \n"\
                                   " sZXCVB      NMu<>? \n"\
-                                  " caglr  F  M  ldrlr \n"), false);
+                                  " caglr  F  M  ldrlr \n"\
+                                  "                    \n"), false);
             } else {
                 oled_write_P(PSTR("[Layer]     [qwerty]\n"\
                                   " E12345      67890B \n"\
                                   " Tqwert      yuiop' \n"\
                                   " `asdfg      hjkl;R \n"\
                                   " Szxcvb      nmU,./ \n"\
-                                  " CAGLR  F  M  LDRLR \n"), false);
+                                  " CAGLR  F  M  LDRLR \n"\
+                                  "                    \n"), false);
             }
             break;
         case _LOWER:
@@ -120,7 +122,8 @@ static void render_keymap(void) {
                               " ......      ...[]\\ \n"\
                               " .12345      6..... \n"\
                               " .78901      2..... \n"\
-                              " ...... .  . ...... \n"), false);
+                              " ...... .  . ...... \n"\
+                              "                    \n"), false);
             break;
         case _RAISE:
             oled_write_P(PSTR("[Layer]      [Raise]\n"\
@@ -128,7 +131,8 @@ static void render_keymap(void) {
                               " ......      ...{}| \n"\
                               " ......      ...... \n"\
                               " ......      ...... \n"\
-                              " ...... .  . ...... \n"), false);
+                              " ...... .  . ...... \n"\
+                              "                    \n"), false);
             break;
         case _FN:
             oled_write_P(PSTR("[Layer]   [Function]\n"\
@@ -136,7 +140,8 @@ static void render_keymap(void) {
                               " ......      ...... \n"\
                               " ......      ...... \n"\
                               " C.....      .MU... \n"\
-                              " ...... .  . .HDE.. \n"), false);
+                              " ...... .  . .HDE.. \n"\
+                              "                    \n"), false);
             break;
         case _ADJUST:
             oled_write_P(PSTR("[Layer]     [Adjust]\n"\
@@ -144,7 +149,8 @@ static void render_keymap(void) {
                               " .12...      ....P. \n"\
                               " .12345      6..... \n"\
                               " .78901      2..... \n"\
-                              " ...... .  . ...... \n"), false);
+                              " ...... .  . ...... \n"\
+                              "                    \n"), false);
             break;
         case _NUMPAD:
             oled_write_P(PSTR("[Layer]     [numpad]\n"\
@@ -152,7 +158,8 @@ static void render_keymap(void) {
                               " ......      .456.. \n"\
                               " ......      .123.. \n"\
                               " ......      .0cd.. \n"\
-                              " ...... .  . ...... \n"), false);
+                              " ...... .  . ...... \n"\
+                              "                    \n"), false);
             break;
         default:
             oled_write_P(PSTR("[Layer]  [SBG 18 66]\n"\
@@ -173,7 +180,7 @@ static void render_locks(void) {
     oled_write_P((led_state.num_lock ? PSTR("NUM") : PSTR("   ")), led_state.num_lock);
     oled_write_P(PSTR("] ["), false);
     oled_write_P((led_state.scroll_lock ? PSTR("SCR") : PSTR("   ")), led_state.scroll_lock);
-    oled_write_P(PSTR("] "), false);
+    oled_write_P(PSTR("] \n"), false);
 }
 
 /*
