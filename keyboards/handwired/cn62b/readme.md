@@ -5,7 +5,8 @@
 An ergonomic/split layout keyboard inspired by the Mysterium. There's an
 encoder, and there might be an OLED.
 
-* Keyboard Maintainer: covah901 or [rupa](https://github.com/rupa)
+* Keyboard Maintainer: [covah901](https://github.com/covah901) or
+  [rupa](https://github.com/rupa)
 * Hardware Supported: CN62b, atmega32A
 * Hardware Availability: TBD
 
