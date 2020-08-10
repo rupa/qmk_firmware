@@ -6,7 +6,7 @@
 #define PRODUCT_ID      0x8769
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    covah901
-#define PRODUCT         MYSTERIUM62b
+#define PRODUCT         CN62b
 #define DESCRIPTION     Ergo keyboard that can be assembled with only through hole components
 
 /* key matrix size */
