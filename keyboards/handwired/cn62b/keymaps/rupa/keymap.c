@@ -91,110 +91,112 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 #endif
 }
 
+
 #ifdef OLED_DRIVER_ENABLE
 
 // 20x8 char screen
 
-static void render_line(void){
-  oled_write_P(PSTR("                    \n"), false);
+// we're mounted upside down
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    return OLED_ROTATION_180;
 }
 
-void render_layer_name(bool shifted) {
-    switch (get_highest_layer(layer_state)) {
+// font chars
+//
+// 0x12, ud
+// 0x17, ud with line
+// arrows u,d,r,l: 0x18,0x19,0x1a,0x1b
+// fat arrows l,r,u,d: 0x10,0x11,0x1e,0x1f
+
+// layer cheat sheets
+static void render_qwerty(void) {
+    oled_write_P(PSTR(" E12345      67890B \n"\
+                      " Tqwert      yuiop' \n"\
+                      " `asdfg      hjkl;R \n"\
+                      " Szxcvb      nm\x18,./ \n"\
+                      " CAGLR  F  M  \x1b\x19\x1aLR \n"), false);
+}
+static void render_QWERTY(void) {
+    oled_write_P(PSTR(" e!@#$%      ^&*()B \n"\
+                      " tQWERT      YUIOP\" \n"\
+                      " ~ASDFG      HJKL:r \n"\
+                      " sZXCVB      NM\x18<>? \n"\
+                      " caglr  f  m  \x1b\x19\x1alr \n"), false);
+}
+static void render_lower(void) {
+    oled_write_P(PSTR(" ......      ...-=D \n"\
+                      " ......      ...[]\\ \n"\
+                      " .12345      6..... \n"\
+                      " .78901      2..... \n"\
+                      " ...... .  . ...... \n"), false);
+}
+static void render_raise(void) {
+    oled_write_P(PSTR(" ......      ..._+D \n"\
+                      " ......      ...{}| \n"\
+                      " ......      ...... \n"\
+                      " ......      ...... \n"\
+                      " ...... .  . ...... \n"), false);
+}
+static void render_adjust(void) {
+    oled_write_P(PSTR(" .12345      67890. \n"\
+                      " .12...      ....P. \n"\
+                      " .12345      6..... \n"\
+                      " .78901      2..... \n"\
+                      " ...... .  . ...... \n"), false);
+}
+static void render_function(void) {
+    oled_write_P(PSTR(" ......      .....D \n"\
+                      " ......      ...... \n"\
+                      " ......      ...... \n"\
+                      " C.....      .MU... \n"\
+                      " ...... .  . .HDE.. \n"), false);
+}
+static void render_numpad(void) {
+    oled_write_P(PSTR(" ......      N789.. \n"\
+                      " ......      .456.. \n"\
+                      " ......      .123.. \n"\
+                      " ......      .0cd.. \n"\
+                      " ...... .  . ...... \n"), false);
+}
+
+const char * layer_P(uint8_t layer, bool shifted) {
+    switch (layer) {
         case _QWERTY:
-            if (get_mods()&MOD_MASK_SHIFT) {
-                oled_write_P(PSTR(" QWERTY "), shifted);
-            } else {
-                oled_write_P(PSTR(" qwerty "), shifted);
-            }
-            break;
+            return shifted ? PSTR(" QWERTY ") : PSTR(" qwerty ");
         case _LOWER:
-            oled_write_P(PSTR(" Lower  "), shifted);
-            break;
+            return PSTR(" Lower\x19 ");
         case _RAISE:
-            oled_write_P(PSTR(" Raise  "), shifted);
-            break;
+            return PSTR(" Raise\x18 ");
         case _FN:
-            oled_write_P(PSTR("Function"), shifted);
-            break;
+            return PSTR("Function");
         case _ADJUST:
-            oled_write_P(PSTR(" Adjust "), shifted);
-            break;
+            return PSTR(" Adjust ");
         case _NUMPAD:
-            oled_write_P(PSTR(" Numpad "), shifted);
-            break;
+            return PSTR(" Numpad ");
         default:
-            oled_write_P(PSTR("SBG 1866"), shifted);
+            return PSTR("SBG 1866");
     }
 }
 
-static void render_status_bar(void) {
-  uint8_t modifiers = get_mods();
-  led_t led_state = host_keyboard_led_state();
-  oled_write_P(PSTR("  "), false);
-  oled_write_P(PSTR("^"), (modifiers & MOD_MASK_CTRL));
-  oled_write_P(PSTR("%"), (modifiers & MOD_MASK_ALT));
-  oled_write_P(PSTR("$"), (modifiers & MOD_MASK_GUI));
-  oled_write_P(PSTR(" "), false);
-  render_layer_name(modifiers & MOD_MASK_SHIFT);
-  oled_write_P(PSTR(" "), false);
-  oled_write_P(PSTR("C"), led_state.caps_lock);
-  oled_write_P(PSTR("N"), led_state.num_lock);
-  oled_write_P(PSTR("S"), led_state.scroll_lock);
-  oled_write_P(PSTR("  \n"), false);
-}
-
-static void render_keymap(void) {
-    switch (get_highest_layer(layer_state)) {
+static void render_keymap(uint8_t layer, uint8_t mods) {
+    switch (layer) {
         case _QWERTY:
-            if (get_mods()&MOD_MASK_SHIFT) {
-                oled_write_P(PSTR(" e!@#$%      ^&*()B \n"\
-                                  " tQWERT      YUIOP\" \n"\
-                                  " ~ASDFG      HJKL:r \n"\
-                                  " sZXCVB      NMu<>? \n"\
-                                  " caglr  F  M  ldrlr \n"), false);
-            } else {
-                oled_write_P(PSTR(" E12345      67890B \n"\
-                                  " Tqwert      yuiop' \n"\
-                                  " `asdfg      hjkl;R \n"\
-                                  " Szxcvb      nmU,./ \n"\
-                                  " CAGLR  F  M  LDRLR \n"), false);
-            }
+            mods & MOD_MASK_SHIFT ? render_QWERTY() : render_qwerty();
             break;
         case _LOWER:
-            oled_write_P(PSTR(" ......      ...-=D \n"\
-                              " ......      ...[]\\ \n"\
-                              " .12345      6..... \n"\
-                              " .78901      2..... \n"\
-                              " ...... .  . ...... \n"), false);
+            render_lower();
             break;
         case _RAISE:
-            oled_write_P(PSTR(" ......      ..._+D \n"\
-                              " ......      ...{}| \n"\
-                              " ......      ...... \n"\
-                              " ......      ...... \n"\
-                              " ...... .  . ...... \n"), false);
-            break;
-        case _FN:
-            oled_write_P(PSTR(" ......      .....D \n"\
-                              " ......      ...... \n"\
-                              " ......      ...... \n"\
-                              " C.....      .MU... \n"\
-                              " ...... .  . .HDE.. \n"), false);
+            render_raise();
             break;
         case _ADJUST:
-            oled_write_P(PSTR(" .12345      67890. \n"\
-                              " .12...      ....P. \n"\
-                              " .12345      6..... \n"\
-                              " .78901      2..... \n"\
-                              " ...... .  . ...... \n"), false);
+            render_adjust();
+            break;
+        case _FN:
+            render_function();
             break;
         case _NUMPAD:
-            oled_write_P(PSTR(" ......      N789.. \n"\
-                              " ......      .456.. \n"\
-                              " ......      .123.. \n"\
-                              " ......      .0cd.. \n"\
-                              " ...... .  . ...... \n"), false);
+            render_numpad();
             break;
         default:
             oled_write_P(PSTR("sarva-dharman parity\n"\
@@ -205,32 +207,30 @@ static void render_keymap(void) {
     }
 }
 
-/*
-void rbg(const char *data, bool invert) {
-    int a, b = 0;
-    uint8_t c = pgm_read_byte(data);
-    while (c != 0) {
-        oled_write_char(c, invert);
-        c = pgm_read_byte(++data);
-        if (a++ >= 20) {
-            a = 0;
-            oled_write_char('\n', invert);
-            if (b++ >= 8) {
-                return;
-            }
-        };
-    }
-}
-*/
-
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    return OLED_ROTATION_180;
+static void render_status_line(uint8_t layer, uint8_t mods, led_t leds) {
+    const char * layer_str = layer_P(layer, mods & MOD_MASK_SHIFT);
+    oled_write_P(PSTR("  "), false);
+    oled_write_P(PSTR("^"), mods & MOD_MASK_CTRL);
+    oled_write_P(PSTR("%"), mods & MOD_MASK_ALT);
+    oled_write_P(PSTR("$"), mods & MOD_MASK_GUI);
+    oled_write_P(PSTR(" "), false);
+    oled_write_P(layer_str, mods & MOD_MASK_SHIFT);
+    oled_write_P(PSTR(" "), false);
+    oled_write_P(PSTR("C"), leds.caps_lock);
+    oled_write_P(PSTR("N"), leds.num_lock);
+    oled_write_P(PSTR("S"), leds.scroll_lock);
+    oled_write_P(PSTR("  \n"), false);
 }
 
 void oled_task_user(void) {
-    render_line();
-    render_keymap();
-    render_line();
-    render_status_bar();
+    uint8_t layer = get_highest_layer(layer_state);
+    uint8_t mods = get_mods();
+    led_t leds = host_keyboard_led_state();
+
+    // 8 lines total
+    oled_write_P(PSTR("                    \n"), false);
+    render_keymap(layer, mods);
+    oled_write_P(PSTR("                    \n"), false);
+    render_status_line(layer, mods, leds);
 }
 #endif
