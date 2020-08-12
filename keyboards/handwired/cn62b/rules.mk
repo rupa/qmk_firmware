@@ -41,4 +41,4 @@ HD44780_ENABLE = no        # Enable support for HD44780 based LCDs
 ENCODER_ENABLE = yes
 OLED_DRIVER_ENABLE = no
 
-LAYOUTS = 13 x 5 ortho
+#LAYOUTS = 13 x 5 ortho
