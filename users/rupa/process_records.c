@@ -1,6 +1,9 @@
 #include "rupa.h"
 
-__attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) { return true; }
+__attribute__((weak))
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+    return true;
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
@@ -16,10 +19,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 #if defined(UNICODEMAP_ENABLE)
             case LOD:
-                send_unicode_string((is_shifted ? "¯\\_(ツ)_/¯" : "ಠ_ಠ"));
+                send_unicode_string((is_shifted ? PSTR("¯\\_(ツ)_/¯") : PSTR("ಠ_ಠ")));
                 return false;
             case RUPA:
-                send_unicode_string((is_shifted ? "Śrīrūpa" : "rūpa"));
+                send_unicode_string((is_shifted ? PSTR("Śrīrūpa") : PSTR("rūpa")));
                 return false;
 
             case DICE:
@@ -51,5 +54,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
             }
     }
-    return true;
+    return process_record_keymap(keycode, record);
 }

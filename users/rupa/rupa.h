@@ -6,6 +6,7 @@
 
 enum userspace_layers {
     _QWERTY = 0,
+    _LOWER,
     _RAISE,
 };
 
@@ -43,6 +44,7 @@ const font_t* get_script_mode(void);
 bool set_script_mode(int fc);
 bool script_mode_translate(bool is_shifted, uint32_t keycode);
 
+#define LOWER   MO(_LOWER)
 #define RAISE   MO(_RAISE)
 #define OS_RGUI OSM(MOD_RGUI)
 #define OS_RALT OSM(MOD_RALT)
