@@ -13,7 +13,10 @@ enum userspace_layers {
 
 enum userspace_custom_keycodes {
     VRSN = SAFE_RANGE,
+    BUGS,
+    CATS,
     DICE,
+    HUGS,
     LOD,
     RUPA,
     U_FRACT,
@@ -23,6 +26,7 @@ enum userspace_custom_keycodes {
     U_SANSI,
     U_SANSN,
     U_SCRPT,
+    NEXT_SAFE_RANGE,
 };
 
 enum userspace_font_choices {

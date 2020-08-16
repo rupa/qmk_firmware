@@ -7,28 +7,31 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
-#if defined(UNICODEMAP_ENABLE) || defined(UNICODE_SCRIPT_MODE_ENABLE)
         bool is_shifted = get_mods()&MOD_MASK_SHIFT;
-#endif
         switch(keycode) {
             case VRSN:
                 send_string_with_delay_P(PSTR(
                     "# " QMK_KEYBOARD "/" QMK_KEYMAP ":" QMK_VERSION " " QMK_BUILDDATE "\n"
                 ), TAP_CODE_DELAY);
                 return false;
-
-#if defined(UNICODEMAP_ENABLE)
+            case BUGS:
+                send_unicode_string("ᙙᙖ");
+                return false;
+            case CATS:
+                send_unicode_string("=＾● ⋏ ●＾=");
+                return false;
+            case HUGS:
+                send_unicode_string((is_shifted ? "(シ_ _)シ" : "(っಠ‿ಠ)っ"));
+                return false;
             case LOD:
-                send_unicode_string((is_shifted ? PSTR("¯\\_(ツ)_/¯") : PSTR("ಠ_ಠ")));
+                send_unicode_string((is_shifted ? "¯\\_(ツ)_/¯" : "ಠ_ಠ"));
                 return false;
             case RUPA:
-                send_unicode_string((is_shifted ? PSTR("Śrīrūpa") : PSTR("rūpa")));
+                send_unicode_string((is_shifted ? "Śrīrūpa" : "rūpa"));
                 return false;
-
             case DICE:
                 send_unicode_string(d6());
                 return false;
-#endif
 
 #if defined(UNICODE_SCRIPT_MODE_ENABLE)
             // script modes

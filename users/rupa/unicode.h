@@ -3,7 +3,9 @@
 
 #if defined(UNICODEMAP_ENABLE)
 enum unicode_names {
+    CCIR, //
     CHEK, // ✓
+    CKEY, //
     CUI,  // ⚠
     ECKS, // ✖
     /*
@@ -22,10 +24,14 @@ enum unicode_names {
     M8,   // ♪
     M8B,  // ♫
     M16,  // ♬
+    NEG,  //  ⃠
+    NOPE, // 🚫
+    NUM,  // №
     OM,   // ॐ
     SMB,  // ☻
     SMW,  // ☺
     STB,  // ★
+    STOP, // ⛔
     STW,  // ☆
 };
 #endif
