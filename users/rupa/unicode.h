@@ -3,28 +3,25 @@
 
 #if defined(UNICODEMAP_ENABLE)
 enum unicode_names {
-    CCIR, //
+    CCIR, // COMBINING  ⃝
+    CENT, // ¢
     CHEK, // ✓
-    CKEY, //
+    CKEY, // COMBINING  ⃣
     CUI,  // ⚠
     ECKS, // ✖
-    /*
-    DI1,  // ⚀
-    DI2,  // ⚁
-    DI3,  // ⚂
-    DI4,  // ⚃
-    DI5,  // ⚄
-    DI6,  // ⚅
-    */
     HAS,  // ☭
     HUN,  // 💯
     IBNG, // ‽
     IRNY, // ⸮
+    LALL, // ∀
+    LELM, // ∈
+    LEXI, // ∃
+    LPRO, // ⊢
     M4,   // ♩
     M8,   // ♪
     M8B,  // ♫
     M16,  // ♬
-    NEG,  //  ⃠
+    NEG,  // COMBINING  ⃠
     NOPE, // 🚫
     NUM,  // №
     OM,   // ॐ
@@ -36,4 +33,11 @@ enum unicode_names {
 };
 #endif
 
-const char *d6(void);
+// random choices
+const char * d6(void);
+const char * dance(bool more);
+const char * flip(bool back);
+const char * joy(bool harder);
+
+bool u_x(const char *text);
+bool u_xp(bool is_shifted, const char * shifted, const char *plain);

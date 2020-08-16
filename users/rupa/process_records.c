@@ -14,31 +14,50 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     "# " QMK_KEYBOARD "/" QMK_KEYMAP ":" QMK_VERSION " " QMK_BUILDDATE "\n"
                 ), TAP_CODE_DELAY);
                 return false;
+
             case BUGS:
-                send_unicode_string("ᙙᙖ");
-                return false;
+                return u_xp(is_shifted, "ᙙᙖ", "ଳ");
             case CATS:
-                send_unicode_string("=＾● ⋏ ●＾=");
-                return false;
-            case HUGS:
-                send_unicode_string((is_shifted ? "(シ_ _)シ" : "(っಠ‿ಠ)っ"));
-                return false;
-            case LOD:
-                send_unicode_string((is_shifted ? "¯\\_(ツ)_/¯" : "ಠ_ಠ"));
-                return false;
-            case RUPA:
-                send_unicode_string((is_shifted ? "Śrīrūpa" : "rūpa"));
-                return false;
+                return u_xp(is_shifted, "ⓛ ᆽ ⓛ ", "ㅇㅅㅇ");
+            case DANCE:
+                return u_x(dance(is_shifted));
             case DICE:
-                send_unicode_string(d6());
+                return u_x(d6());
+            case DOMO:
+                return u_xp(is_shifted, "(シ_ _)シ", "m(_ _)m");
+            case FART:
+                return u_x("⊥ʶ∀Ⅎ");
+            case FLIP:
+                return u_x(flip(is_shifted));
+            case HUGS:
+                return u_xp(is_shifted, "(づ￣ ³￣)づ", "(っಠ‿ಠ)っ");
+            case JOY:
+                return u_x(joy(is_shifted));
+            case RNDM:
                 return false;
+            case KISS:
+                return u_xp(is_shifted, "꒒ ০ ⌵ ୧ ♡", "( ˘ ³˘)♥");
+            case LOD:
+                return u_xp(is_shifted, "( ͡ಠ ʖ̯ ͡ಠ)", "ಠ_ಠ");
+            case MUSIC:
+                return u_xp(is_shifted, "(˳˘ ɜ˘)˳ ♬ ♪♫", "(´▽｀)ノ♫");
+            case RUPA:
+                return u_xp(is_shifted, "Śrīrūpa", "rūpa");
+            case SHRUG:
+                return u_xp(is_shifted, "⋌ ༼ •̀ ⌂ •́ ༽⋋", "¯\\_(ツ)_/¯");
+            case TADA:
+                return u_xp(is_shifted, "☆ *･゜ﾟ･*(^O^)/*･゜ﾟ･*☆", "＼＼(゜ロ＼＼)Ξ(／／ロ゜)／／");
+            case WAT:
+                return u_xp(is_shifted, "༼  ຶཽཀ  ຶཽ༽", "ヽ༼⊙_⊙༽ﾉ");
+            case YUNO:
+                return u_xp(is_shifted, "o(^^o)", "щ(゜ロ゜щ)");
 
 #if defined(UNICODE_SCRIPT_MODE_ENABLE)
             // script modes
             case U_FRACT:
                 return set_script_mode(F_FRACT);
             case U_ITALI:
-                return set_script_mode(F_FRACT);
+                return set_script_mode(F_ITALI);
             case U_MONOS:
                 return set_script_mode(F_MONOS);
             case U_NORML:
