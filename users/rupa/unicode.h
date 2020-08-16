@@ -36,12 +36,4 @@ enum unicode_names {
 };
 #endif
 
-#define CUIDADO XP(CUI,HAS)
-#define HIPSTER XP(IBNG,IRNY)
-#define MUSIC_A XP(M4,M8)
-#define MUSIC_B XP(M8B,M16)
-#define SMILE   XP(SMB,SMW)
-#define STARS   XP(STB,STW)
-#define YEPYEP  XP(CHEK,HUN)
-
 const char *d6(void);
