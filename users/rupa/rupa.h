@@ -8,6 +8,7 @@ enum userspace_layers {
     _QWERTY = 0,
     _LOWER,
     _RAISE,
+    _ADJUST,
 };
 
 enum userspace_custom_keycodes {
