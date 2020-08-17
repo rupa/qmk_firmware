@@ -24,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_ADJUST] = LAYOUT_65_wrapper(
         ____65_ADJUST______________ROW1,
-        ____65_ADJUST______________ROW2,
+        ____65_ADJUST___________BL_ROW2,
         ____65_ADJUST______________ROW3,
         ____65_ADJUST______________ROW4,
         ____65_ADJUST______________ROW5
