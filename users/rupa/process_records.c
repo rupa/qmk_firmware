@@ -7,7 +7,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
-        bool is_shifted = get_mods()&MOD_MASK_SHIFT;
+        bool is_shifted = get_mods() & MOD_MASK_SHIFT;
         switch(keycode) {
             case VRSN:
                 send_string_with_delay_P(PSTR(

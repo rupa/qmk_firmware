@@ -64,7 +64,7 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
  * └────┴────┴────┴────────────────────────┴────┴────┘ └───┴───┴───┘
  */
 #define ____65_RAISE_______________ROW1    _______, X(IBNG), _______, _______, X(CENT), _______, _______, _______, STARS,   _______, SMILE,   X(NEG),  CSHAPES, KC_DEL,  KC_HOME
-#define ____65_RAISE_______________ROW2    _______, _______,    WAT,     X(LEXI), RUPA,    TADA,    YUNO,    _______, X(LELM), X(OM),   _______, MUSIC_A, MUSIC_B, _______, KC_INS
+#define ____65_RAISE_______________ROW2    _______, _______, WAT,     X(LEXI), RUPA,    TADA,    YUNO,    _______, X(LELM), X(OM),   _______, MUSIC_A, MUSIC_B, _______, KC_INS
 #define ____65_RAISE_______________ROW3    _______, X(LALL), SHRUG,   DICE,    FART,    _______, HUGS,    JOY,     KISS,    LOD,     _______, NOPENAH,          YEPYEP,  KC_END
 #define ____65_RAISE_______________ROW4    OS_RSFT,          CUIDADO, X(ECKS), CATS,    DOMO,    BUGS,    X(NUM),  MUSIC,   DANCE,   X(LPRO), X(IRNY), KC_BTN1, KC_MS_U, KC_BTN2
 #define ____65_RAISE_______________ROW5    OS_RCTL, OS_RALT, OS_RGUI,                            FLIP,                      _______, _______, _______, KC_MS_L, KC_MS_D, KC_MS_R
