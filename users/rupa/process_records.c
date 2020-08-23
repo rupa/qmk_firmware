@@ -72,8 +72,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return set_script_mode(F_SCRPT);
 
             default:
-                if (get_script_mode() != NULL && script_mode_translate(is_shifted, keycode)) {
-                    return false;
+                if (get_script_mode() != NULL) {
+                    return script_mode_translate(is_shifted, keycode);
                 }
                 if (get_zalgo_mode() && zalgo_text(keycode)) {
                     return false;
