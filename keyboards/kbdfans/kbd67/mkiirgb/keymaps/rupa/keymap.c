@@ -35,20 +35,32 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
+#ifdef RGB_MATRIX_ENABLE
+
+void led_up(char r, char g, char b) {
+     rgb_matrix_set_color(56, r, g, b);
+}
+void led_lt(char r, char g, char b) {
+     rgb_matrix_set_color(64, r, g, b);
+}
+void led_dn(char r, char g, char b) {
+     rgb_matrix_set_color(65, r, g, b);
+}
+void led_rt(char r, char g, char b) {
+     rgb_matrix_set_color(66, r, g, b);
+}
+
 void rgb_matrix_indicators_user(void) {
-    // u,l,d,r: 65,64,65,66
-    //uint8_t layer = get_highest_layer(layer_state);
-    //uint8_t mods = get_mods();
     led_t leds = host_keyboard_led_state();
 
     if (leds.caps_lock) {
-        rgb_matrix_set_color(64, 0xFF, 0x00, 0x00);
+        led_lt(0xFF, 0x00, 0x00);
     }
     if (leds.num_lock) {
-        rgb_matrix_set_color(65, 0x00, 0xFF, 0x00);
+        led_dn(0x00, 0xFF, 0x00);
     }
     if (leds.scroll_lock) {
-        rgb_matrix_set_color(66, 0x00, 0x00, 0xFF);
+        led_rt(0x00, 0x00, 0xFF);
     }
 }
 
@@ -59,3 +71,5 @@ void suspend_power_down_user(void) {
 void suspend_wakeup_init_user(void) {
     rgb_matrix_set_suspend_state(false);
 }
+
+#endif
