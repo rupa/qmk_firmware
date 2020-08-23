@@ -4,6 +4,7 @@
 #include "process_records.h"
 #include "unicode.h"
 #include "wrappers.h"
+#include "zalgo.h"
 
 enum userspace_layers {
     _QWERTY = 0,

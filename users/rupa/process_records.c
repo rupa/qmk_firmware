@@ -51,6 +51,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return u_xp(is_shifted, "༼  ຶཽཀ  ຶཽ༽", "ヽ༼⊙_⊙༽ﾉ");
             case YUNO:
                 return u_xp(is_shifted, "o(^^o)", "щ(゜ロ゜щ)");
+            case ZALGO:
+                return toggle_zalgo_mode();
 
 #if defined(UNICODE_SCRIPT_MODE_ENABLE)
             // script modes
@@ -70,8 +72,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return set_script_mode(F_SCRPT);
 
             default:
-                if (get_script_mode() != NULL) {
-                    return script_mode_translate(is_shifted, keycode);
+                if (get_script_mode() != NULL && script_mode_translate(is_shifted, keycode)) {
+                    return false;
+                }
+                if (get_zalgo_mode() && zalgo_text(keycode)) {
+                    return false;
                 }
 #endif
             }
