@@ -34,6 +34,7 @@ const font_t *get_script_mode(void) {
 }
 bool set_script_mode(int fc) {
     translator = translator == fonts_map[fc] ? NULL : fonts_map[fc];
+    dprintf("set_script_mode: %u %b\n", fc, translator != NULL);
     return true;
 }
 

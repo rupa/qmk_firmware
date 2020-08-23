@@ -9,7 +9,7 @@ enum userspace_layers {
     _QWERTY = 0,
     _LOWER,
     _RAISE,
-    _ADJUST,
+    _ADJUST
 };
 
 enum userspace_custom_keycodes {
@@ -30,8 +30,6 @@ enum userspace_custom_keycodes {
     RUPA,
     SHRUG,
     TADA,
-    WAT,
-    YUNO,
     U_FRACT,
     U_ITALI,
     U_MONOS,
@@ -39,7 +37,10 @@ enum userspace_custom_keycodes {
     U_SANSI,
     U_SANSN,
     U_SCRPT,
-    NEXT_SAFE_RANGE,
+    WAT,
+    YUNO,
+    ZALGO,
+    NEXT_SAFE_RANGE
 };
 
 enum userspace_font_choices {
@@ -49,7 +50,7 @@ enum userspace_font_choices {
     F_NORML,
     F_SANSI,
     F_SANSN,
-    F_SCRPT,
+    F_SCRPT
 };
 
 typedef struct font_t {
