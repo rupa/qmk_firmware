@@ -1,5 +1,7 @@
 #include "rupa.h"
 
+uint16_t processed_keycode;
+
 __attribute__((weak))
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     return true;
@@ -7,8 +9,18 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
+
+        processed_keycode = keycode;
+        // mask out mod taps
+        if (
+            (keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) ||
+            (keycode >= QK_LAYER_TAP && keycode <= QK_LAYER_TAP_MAX)
+        ) {
+            processed_keycode &= 0xFF;
+        }
+
         bool is_shifted = get_mods() & MOD_MASK_SHIFT;
-        switch(keycode) {
+        switch(processed_keycode) {
             case VRSN:
                 send_string_with_delay_P(PSTR(
                     "# " QMK_KEYBOARD "/" QMK_KEYMAP ":" QMK_VERSION " " QMK_BUILDDATE "\n"
@@ -52,7 +64,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case YUNO:
                 return u_xp(is_shifted, "o(^^o)", "щ(゜ロ゜щ)");
             case ZALGO:
-                return toggle_zalgo_mode();
+                set_combined_mode(CM_ZALGO);
+                break;
+            case ZZZZZ:
+                cycle_combined_mode();
+                return false;
 
 #if defined(UNICODE_SCRIPT_MODE_ENABLE)
             // script modes
@@ -73,9 +89,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
             default:
                 if (get_script_mode() != NULL) {
-                    return script_mode_translate(is_shifted, keycode);
+                    return script_mode_translate(is_shifted, processed_keycode);
                 }
-                if (get_zalgo_mode() && zalgo_text(keycode)) {
+                if (combined_mode != CM_NULL && combined_text(processed_keycode)) {
                     return false;
                 }
 #endif

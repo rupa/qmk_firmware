@@ -1,5 +1,6 @@
 #include "unicode.h"
 
+combined_mode_t combined_mode = CM_NULL;
 bool _seeded = false;
 
 #if defined(UNICODEMAP_ENABLE)
@@ -104,3 +105,49 @@ bool u_xp(bool is_shifted, const char *shifted, const char *plain) {
     send_unicode_string(is_shifted ? shifted : plain);
     return false;
 };
+
+void zalgo(void) {
+    int number = (rand() % (8 + 1 - 2)) + 2;
+    unsigned int index;
+    for (index=0; index<number; index++) {
+        uint16_t hex = (rand() % (0x036F + 1 - 0x0300)) + 0x0300;
+        register_hex(hex);
+    }
+}
+
+bool combined_text(uint16_t keycode) {
+    if (keycode < KC_A || (keycode > KC_0 && keycode < KC_MINUS) || keycode > KC_SLASH) {
+        return false;
+    }
+    tap_code(keycode);
+    unicode_input_start();
+    switch (combined_mode) {
+        case CM_CIRCLE:
+          register_hex(0x20DD);
+          break;
+        case CM_NO:
+          register_hex(0x20E0);
+          break;
+        case CM_KEYCAP:
+          register_hex(0x20E3);
+          break;
+        case CM_ZALGO:
+          zalgo();
+          break;
+        default:
+          break;
+    }
+    unicode_input_finish();
+    return true;
+}
+
+void cycle_combined_mode(void) {
+    if (combined_mode++ >= CM_MAX - 1) {
+        combined_mode = CM_NULL;
+    }
+}
+
+combined_mode_t set_combined_mode(combined_mode_t mode) {
+    combined_mode = combined_mode == mode ? CM_NULL : mode;
+    return combined_mode;
+}

@@ -41,6 +41,7 @@ enum userspace_custom_keycodes {
     WAT,
     YUNO,
     ZALGO,
+    ZZZZZ,
     NEXT_SAFE_RANGE
 };
 
