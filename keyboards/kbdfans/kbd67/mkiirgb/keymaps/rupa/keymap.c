@@ -37,51 +37,43 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 #ifdef RGB_MATRIX_ENABLE
 
-void led_up(char r, char g, char b) {
-     rgb_matrix_set_color(56, r, g, b);
-}
-void led_lt(char r, char g, char b) {
-     rgb_matrix_set_color(64, r, g, b);
-}
-void led_dn(char r, char g, char b) {
-     rgb_matrix_set_color(65, r, g, b);
-}
-void led_rt(char r, char g, char b) {
-     rgb_matrix_set_color(66, r, g, b);
-}
-void led_keys(char r, char g, char b) {
-     //uint8_t keys[] = {0, 14, 29, 35, 36, 43, 57, 61};
-     uint8_t keys[] = {14, 29, 43, 57};
+#define RGB_LED_U 56
+#define RGB_LED_L 64
+#define RGB_LED_D 65
+#define RGB_LED_R 66
+#define RGB_LED_LAST_COL 14, 29, 43, 57
+
+void set_last_col(char r, char g, char b) {
+     uint8_t keys[] = {RGB_LED_LAST_COL};
      for (int i=0; i<sizeof(keys)/sizeof(uint8_t); i++) {
          rgb_matrix_set_color(keys[i], r, g, b);
      }
 }
 
 void rgb_matrix_indicators_user(void) {
-    led_t leds = host_keyboard_led_state();
-
     switch (get_highest_layer(layer_state)) {
         case _RAISE:
-            led_keys(RGB_MAGENTA);
+            set_last_col(RGB_MAGENTA);
             break;
         case _LOWER:
-            led_keys(RGB_CYAN);
+            set_last_col(RGB_CYAN);
             break;
         case _ADJUST:
-            led_keys(RGB_YELLOW);
+            set_last_col(RGB_YELLOW);
             break;
         default:
-            led_keys(0x00, 0x00, 0x00);
+            set_last_col(0x00, 0x00, 0x00);
     }
 
+    led_t leds = host_keyboard_led_state();
     if (leds.caps_lock) {
-        led_lt(RGB_MAGENTA);
+        rgb_matrix_set_color(RGB_LED_L, RGB_MAGENTA);
     }
     if (leds.num_lock) {
-        led_dn(RGB_MAGENTA);
+        rgb_matrix_set_color(RGB_LED_D, RGB_MAGENTA);
     }
     if (leds.scroll_lock) {
-        led_rt(RGB_MAGENTA);
+        rgb_matrix_set_color(RGB_LED_R, RGB_MAGENTA);
     }
 }
 
