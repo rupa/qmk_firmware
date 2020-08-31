@@ -94,7 +94,7 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
  * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┬───┐
  * │RST│F1 │F2 │F3 │F4 │F5 │F6 │F7 │F8 │F9 │F10│F11│F12│       │   │
  * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┼───┤
- * │     │RGB│RGB│RGB│RGB│RGB│RGB│RGB│RGB│   │   │   │   │RESET│   │
+ * │     │r x│r m│rh+│rh-│rs+│rs-│rv+│rv-│ra+│ra-│   │   │RESET│   │
  * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┼───┤
  * │      │   │   │   │   │   │   │   │   │   │   │   │EEP RSET│   │
  * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┬───┼───┤
@@ -110,7 +110,7 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #define ____65_ADJUST______________ROW5    _______, _______, _______,                            _______,                   _______, _______, _______, _______, _______, _______
 #define ____65_ADJUST______BLOCKER_ROW5    _______, _______, _______,                            _______,                   _______, _______,          _______, _______, _______
 
-#define ____65_ADJUST__________RGB_ROW2    _______, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, _______, _______, _______, _______, RESET,   _______
+#define ____65_ADJUST__________RGB_ROW2    _______, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, RGB_SPI, RGB_SPD, _______, _______, RESET,   _______
 #define ____65_ADJUST__________RGB_ROW3    _______, RGB_M_P, RGB_M_B, _______, _______, _______, _______, _______, _______, _______, _______, _______,          EEP_RST, _______
 
 #define ____65_ADJUST___________BL_ROW2    _______, BL_TOGG, BL_BRTG, BL_STEP, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET,   _______
