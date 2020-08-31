@@ -49,9 +49,28 @@ void led_dn(char r, char g, char b) {
 void led_rt(char r, char g, char b) {
      rgb_matrix_set_color(66, r, g, b);
 }
+void led_gh(char r, char g, char b) {
+     rgb_matrix_set_color(35, r, g, b);
+     rgb_matrix_set_color(36, r, g, b);
+}
 
 void rgb_matrix_indicators_user(void) {
+    uint8_t layer = get_highest_layer(layer_state);
     led_t leds = host_keyboard_led_state();
+
+    switch (layer) {
+        case _RAISE:
+            led_gh(0x00, 0x00, 0xFF);
+            break;
+        case _LOWER:
+            led_gh(0xFF, 0xFF, 0x00);
+            break;
+        case _ADJUST:
+            led_gh(0x00, 0xFF, 0x00);
+            break;
+        default:
+            led_gh(0x00, 0x00, 0x00);
+    }
 
     if (leds.caps_lock) {
         led_lt(0xFF, 0x00, 0x00);
