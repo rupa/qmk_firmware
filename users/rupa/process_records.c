@@ -19,7 +19,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             processed_keycode &= 0xFF;
         }
 
-        bool is_shifted = get_mods() & MOD_MASK_SHIFT;
+        bool is_shifted = (get_mods() | get_oneshot_mods() | get_weak_mods()) & MOD_MASK_SHIFT;
         switch(processed_keycode) {
             case VRSN:
                 send_string_with_delay_P(PSTR(
@@ -68,7 +68,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;
             case ZZZZZ:
                 cycle_combined_mode();
-                return false;
+                break;
 
 #if defined(UNICODE_SCRIPT_MODE_ENABLE)
             // script modes
