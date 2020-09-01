@@ -9,6 +9,7 @@ enum unicode_names {
     CKEY, // COMBINING  ⃣
     CUI,  // ⚠
     ECKS, // ✖
+    EFF,  //
     HAS,  // ☭
     HUN,  // 💯
     IBNG, // ‽
