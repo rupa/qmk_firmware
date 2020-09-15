@@ -1,28 +1,28 @@
 #include "rupa.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_QWERTY] = LAYOUT_65_blocker_wrapper(
+    [_QWERTY] = LAYOUT_65_ansi_blocker_wrapper(
         ____65_QWERTY______________ROW1,
         ____65_QWERTY______________ROW2,
         ____65_QWERTY______________ROW3,
         ____65_QWERTY______________ROW4,
         ____65_QWERTY______BLOCKER_ROW5
     ),
-    [_RAISE] = LAYOUT_65_blocker_wrapper(
+    [_RAISE] = LAYOUT_65_ansi_blocker_wrapper(
         ____65_RAISE_______________ROW1,
         ____65_RAISE_______________ROW2,
         ____65_RAISE_______________ROW3,
         ____65_RAISE_______________ROW4,
         ____65_RAISE_______BLOCKER_ROW5
     ),
-    [_LOWER] = LAYOUT_65_blocker_wrapper(
+    [_LOWER] = LAYOUT_65_ansi_blocker_wrapper(
         ____65_LOWER_______________ROW1,
         ____65_LOWER_______________ROW2,
         ____65_LOWER_______________ROW3,
         ____65_LOWER_______________ROW4,
         ____65_LOWER_______BLOCKER_ROW5
     ),
-    [_ADJUST] = LAYOUT_65_blocker_wrapper(
+    [_ADJUST] = LAYOUT_65_ansi_blocker_wrapper(
         ____65_ADJUST______________ROW1,
         ____65_ADJUST__________RGB_ROW2,
         ____65_ADJUST__________RGB_ROW3,
