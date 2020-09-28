@@ -1,0 +1,5 @@
+BOOTLOADER = atmel-dfu
+RGBLIGHT_ENABLE = no
+UNICODEMAP_ENABLE = yes
+
+USER_NAME := rupa
