@@ -1,78 +1,50 @@
 #include "rupa.h"
 
-/*
-#include QMK_KEYBOARD_H
+#define LAYOUT_quefrency_base( \
+            K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, K0B, K0C, K0D, K0E, K0F, \
+            K11, K12, K13, K14, K15, K16, K17, K18, K19, K1A, K1B, K1C, K1D, K1E, K1F, \
+            K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A, K2B, K2C, K2D, K2E, \
+            K31, K32, K33, K34, K35, K36, K37, K38, K39, K3A, K3B, K3C, K3D, K3E, \
+            K41, K42, K43, K44, K45, K46, K47, K48, K49, K4A \
+        ) \
+        LAYOUT_65_wrapper( \
+            K01,     K02,     K03,     K04,     K05,     K06,     K07,     K08,     K09,     K0A,     K0B,     K0C,     K0D,     XXXXXXX, K0E,     K0F, \
+            K11,     K12,     K13,     K14,     K15,     K16,     K17,     K18,     K19,     K1A,     K1B,     K1C,     K1D,              K1E,     K1F, \
+            K21,     K22,     K23,     K24,     K25,     K26,     K27,     K28,     K29,     K2A,     K2B,     K2C,                       K2D,     K2E, \
+            K31,              K32,     K33,     K34,     K35,     K36,     K37,     K38,     K39,     K3A,     K3B,     K3C,              K3D,     K3E, \
+            K41,     K42,     K43,     KC_SPC,  KC_BSPC,                   K44,     XXXXXXX,          K45,     K46,     K47,     K48,     K49,     K4A  \
+        )
 
-extern keymap_config_t keymap_config;
-
-#define _QWERTY 0
-#define _FN1 1
-#define _FN2 2
-#define _FN3 3
-
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_QWERTY] = LAYOUT_65(
-    KC_GESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,  KC_EQL,  XXXXXXX, KC_BSPC, KC_HOME, \
-    KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_LBRC,  KC_RBRC,          KC_BSLS, KC_END,  \
-    MO(_FN1), KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  KC_QUOT,                    KC_ENT,  KC_PGUP, \
-    KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,                     KC_RSFT, KC_UP,   KC_PGDN, \
-    KC_LCTL,  KC_LALT, KC_LGUI, KC_SPC,  MO(_FN2),                  XXXXXXX, KC_SPC,           MO(_FN1), MO(_FN2), KC_CAPS, KC_LEFT, KC_DOWN, KC_RGHT
-  ),
-
-  [_FN1] = LAYOUT_65(
-    KC_GRV,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX, _______, _______, \
-    _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______, \
-    _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______, _______, \
-    _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______, _______, _______, \
-    _______,  _______, _______, _______, _______,                   XXXXXXX, _______,          _______, _______, _______, _______, _______, _______
-  ),
-
-  [_FN2] = LAYOUT_65(
-    _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX, _______, _______, \
-    _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______, \
-    _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______, _______, \
-    _______,  _______, _______, KC_CAPS, _______, _______, _______, _______, _______, _______, _______,                   _______, _______, _______, \
-    _______,  _______, _______, _______, _______,                   XXXXXXX, _______,          _______, _______, _______, _______, _______, _______
-  ),
-
-  [_FN3] = LAYOUT_65(
-    RESET,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, _______, _______, \
-    EEP_RST,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          RESET,   _______, \
-    _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   EEP_RST, _______, \
-    _______,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______, _______, _______, \
-    _______,  _______, _______, _______, _______,                   XXXXXXX, _______,          _______, _______, _______, _______, _______, _______
-  )
-};
-*/
+#define LAYOUT_quefrency_base_wrapper(...)  LAYOUT_quefrency_base(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_QWERTY] = LAYOUT_65_wrapper(
-        ____65_QWERTY____QUEFRENCY_ROW1,
+    [_QWERTY] = LAYOUT_quefrency_base_wrapper(
+        ____65_QWERTY______________ROW1,
         ____65_QWERTY______________ROW2,
         ____65_QWERTY______________ROW3,
         ____65_QWERTY______________ROW4,
-        ____65_QWERTY____QUEFRENCY_ROW5
+        ____65_QWERTY______________ROW5
     ),
-    [_RAISE] = LAYOUT_65_wrapper(
-        ____65_RAISE_____QUEFRENCY_ROW1,
+    [_RAISE] = LAYOUT_quefrency_base_wrapper(
+        ____65_RAISE_______________ROW1,
         ____65_RAISE_______________ROW2,
         ____65_RAISE_______________ROW3,
         ____65_RAISE_______________ROW4,
-        ____65_RAISE_____QUEFRENCY_ROW5
+        ____65_RAISE_______________ROW5
     ),
-    [_LOWER] = LAYOUT_65_wrapper(
-        ____65_LOWER_____QUEFRENCY_ROW1,
+    [_LOWER] = LAYOUT_quefrency_base_wrapper(
+        ____65_LOWER_______________ROW1,
         ____65_LOWER_______________ROW2,
         ____65_LOWER_______________ROW3,
         ____65_LOWER_______________ROW4,
-        ____65_LOWER_____QUEFRENCY_ROW5
+        ____65_LOWER_______________ROW5
     ),
-    [_ADJUST] = LAYOUT_65_wrapper(
-        ____65_ADJUST____QUEFRENCY_ROW1,
+    [_ADJUST] = LAYOUT_quefrency_base_wrapper(
+        ____65_ADJUST______________ROW1,
         ____65_ADJUST______________ROW2,
         ____65_ADJUST______________ROW3,
         ____65_ADJUST______________ROW4,
-        ____65_ADJUST____QUEFRENCY_ROW5
+        ____65_ADJUST______________ROW5
     ),
 };
 
