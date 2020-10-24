@@ -24,8 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 enum userspace_layers {
     _QWERTY = 0,
-    _LOWER,
     _RAISE,
+    _LOWER,
     _ADJUST
 };
 

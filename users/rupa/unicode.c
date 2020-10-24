@@ -26,6 +26,7 @@ const uint32_t PROGMEM unicode_map[] = {
     [CENT] = 0x00A2,  // ¢
     [CHEK] = 0x2713,  // ✓
     [CKEY] = 0x20E3,  // COMBINING KEYCAP  ⃣
+    [CPRT] = 0x00A9,  // ©
     [CUI]  = 0x26A0,  // ⚠
     [ECKS] = 0x2716,  // ✖
     [EFF]  = 0x017F,  // ſ
@@ -33,6 +34,7 @@ const uint32_t PROGMEM unicode_map[] = {
     [HUN]  = 0x1F4AF, // 💯
     [IBNG] = 0x203D,  // ‽
     [IRNY] = 0x2E2E,  // ⸮
+    [INTR] = 0x2229,  // ∩
     [LALL] = 0x2200,  // ∀
     [LELM] = 0x2208,  // ∈
     [LEXI] = 0x2203,  // ∃
@@ -45,11 +47,14 @@ const uint32_t PROGMEM unicode_map[] = {
     [NOPE] = 0x1F6AB, // 🚫
     [NUM]  = 0x2116,  // №
     [OM]   = 0x0950,  // ॐ
+    [RTMK] = 0x00AE,  // ®
     [SMB]  = 0x263A,  // ☻
     [SMW]  = 0x263B,  // ☺
     [STB]  = 0x2605,  // ★
     [STOP] = 0x26D4,  // ⛔
     [STW]  = 0x2606,  // ☆
+    [TDMK] = 0x2122,  // ™
+    [UNIO] = 0x222A,  // ∪
 };
 #endif
 

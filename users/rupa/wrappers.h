@@ -35,7 +35,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define MUSIC_B XP(M8B,M16)
 #    define SMILE   XP(SMB,SMW)
 #    define STARS   XP(STB,STW)
-#    define YEPYEP  XP(CHEK,HUN)
+#    define SET_UI  XP(UNIO, INTR)
+#    define YEPYEP  XP(HUN,CHEK)
 #endif
 
 /* _QWERTY
@@ -59,41 +60,42 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* _RAISE
  * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┬───┐
- * │ ` │ ‽ │ ⸮ │   │ ¢ │   │   │   │★  │   │ ☻ │  ⃠ │CSH│  Del  │Hme│
+ * │ ` │ ‽ │ ⸮ │CAT│ ¢ │   │   │   │★  │   │ ☻ │  ⃠ │CSH│  Del  │Hme│
  * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┼───┤
- * │     │   │WAT│ ∃ │Rup│TAD│YUN│   │ ∈ │ ॐ │   │♩ ♪│♫ ♬│     │Ins│
+ * │     │   │WAT│ ∃ │ ® │ ™ │YUN│∪ ∩│ ∈ │ ॐ │   │♩ ♪│♫ ♬│     │Ins│
  * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┼───┤
- * │      │ ∀ │ ſ │ ⚂ │FRT│   │HUG│JOY│KSS│LOD│   │NO!│ ✓  💯  │End│
+ * │      │ ∀ │ ſ │ ⚂ │FRT│   │HUG│JOY│KSS│LOD│   │NO!│ 💯 ✓   │End│
  * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┬───┼───┤
- * │ RShift │⚠ ☭│ ✖ │CAT│BOW│BUG│ № │MUS│DNC│ ⊢ │SHR│   McL│M↑ │McR│
+ * │ RShift │⚠ ☭│ ✖ │ © │BOW│BUG│ № │MUS│DNC│ ⊢ │SHR│      │   │   │
  * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴──┬┴──┬┴──┬───┼───┼───┤
- * │RCtl│RAlt│RGui│          FLIP          │   │   │   │M← │M↓ │M→ │
+ * │RCtl│RAlt│RGui│          FLIP          │   │   │   │   │   │   │
  * └────┴────┴────┴────────────────────────┴───┴───┴───┴───┴───┴───┘
+ * TADA
  */
-#define ____65_RAISE_______________ROW1    KC_GRV,  X(IBNG), X(IRNY), _______, X(CENT), _______, _______, _______, STARS,   _______, SMILE,   X(NEG),  CSHAPES, KC_DEL,  KC_HOME
-#define ____65_RAISE_______________ROW2    _______, _______, WAT,     X(LEXI), RUPA,    TADA,    YUNO,    _______, X(LELM), X(OM),   _______, MUSIC_A, MUSIC_B, _______, KC_INS
+#define ____65_RAISE_______________ROW1    KC_GRV,  X(IBNG), X(IRNY), CATS,    X(CENT), _______, _______, _______, STARS,   _______, SMILE,   X(NEG),  CSHAPES, KC_DEL,  KC_HOME
+#define ____65_RAISE_______________ROW2    _______, _______, WAT,     X(LEXI), X(RTMK), X(TDMK), YUNO,    SET_UI, X(LELM), X(OM),   _______, MUSIC_A, MUSIC_B, _______, KC_INS
 #define ____65_RAISE_______________ROW3    _______, X(LALL), X(EFF),  DICE,    FART,    _______, HUGS,    JOY,     KISS,    LOD,     _______, NOPENAH,          YEPYEP,  KC_END
-#define ____65_RAISE_______________ROW4    OS_RSFT,          CUIDADO, X(ECKS), CATS,    DOMO,    BUGS,    X(NUM),  MUSIC,   DANCE,   X(LPRO), SHRUG,   KC_BTN1, KC_MS_U, KC_BTN2
-#define ____65_RAISE_______________ROW5    OS_RCTL, OS_RALT, OS_RGUI,                            FLIP,                      _______, _______, _______, KC_MS_L, KC_MS_D, KC_MS_R
+#define ____65_RAISE_______________ROW4    OS_RSFT,          CUIDADO, X(ECKS), X(CPRT), DOMO,    BUGS,    X(NUM),  MUSIC,   DANCE,   X(LPRO), SHRUG,   _______, _______, _______
+#define ____65_RAISE_______________ROW5    OS_RCTL, OS_RALT, OS_RGUI,                            FLIP,                      _______, _______, _______, _______, _______, _______
 
 /* _LOWER
  * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┬───┐
- * │   │   │   │   │   │   │   │   │   │   │   │   │zzz│       │   │
+ * │ ` │   │   │   │   │   │   │   │   │   │   │   │zzz│       │   │
  * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┼───┤
- * │     │u_f│u_i│u_m│u_n│usi│usn│u_s│   │   │PRT│   │   │     │   │
+ * │     │   │   │   │   │   │   │   │   │   │PRT│   │   │     │   │
  * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┼───┤
  * │      │   │SLK│PAU│   │   │   │   │   │   │   │   │        │   │
  * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┬───┼───┤
- * │        │ZAL│   │CAP│VSN│   │NLK│   │   │   │   │      │   │   │
+ * │        │ZAL│   │CAP│VSN│   │NLK│   │   │   │   │   McL│M↑ │McR│
  * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴──┬┴──┬┴──┬───┼───┼───┤
- * │    │    │    │                        │   │   │   │   │   │   │
+ * │    │    │    │                        │   │   │   │M← │M↓ │M→ │
  * └────┴────┴────┴────────────────────────┴───┴───┴───┴───┴───┴───┘
  */
-#define ____65_LOWER_______________ROW1    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, ZZZZZ,   _______, _______
-#define ____65_LOWER_______________ROW2    _______, U_FRACT, U_ITALI, U_MONOS, U_NORML, U_SANSI, U_SANSN, U_SCRPT, _______, _______, KC_PSCR, _______, _______, _______, _______
+#define ____65_LOWER_______________ROW1    KC_GRV,  U_SCRPT, U_FRACT, U_MONOS, U_NORML, U_SANSN, U_ITALI, U_SANSI, _______, _______, _______, _______, ZZZZZ,   _______, _______
+#define ____65_LOWER_______________ROW2    _______, _______, _______, _______, RUPA,    _______, _______, _______, _______, _______, KC_PSCR, _______, _______, _______, _______
 #define ____65_LOWER_______________ROW3    _______, _______, KC_SLCK, KC_PAUS, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______
-#define ____65_LOWER_______________ROW4    _______,          ZALGO  , _______, KC_CAPS, VRSN,    _______, KC_NLCK, _______, _______, _______, _______, _______, _______, _______
-#define ____65_LOWER_______________ROW5    _______, _______, _______,                            _______,                   _______, _______, _______, _______, _______, _______
+#define ____65_LOWER_______________ROW4    _______,          ZALGO  , _______, KC_CAPS, VRSN,    _______, KC_NLCK, _______, _______, _______, _______, KC_BTN1, KC_MS_U, KC_BTN2
+#define ____65_LOWER_______________ROW5    _______, _______, _______,                            _______,                   _______, _______, _______, KC_MS_L, KC_MS_D, KC_MS_R
 
 /* _ADJUST
  * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┬───┐
@@ -101,9 +103,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┼───┤
  * │     │r x│r m│rh+│rh-│rs+│rs-│rv+│rv-│ra+│ra-│   │   │RESET│   │
  * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┼───┤
- * │      │   │   │   │   │   │   │   │   │   │   │   │EEP RSET│   │
+ * │      │   │   │   │   │   │   │   │   │   │   │   │EEPRESET│   │
  * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┬───┼───┤
- * │        │   │   │   │   │   │   │Mut│V- │V+ │   │U MODE│   │   │
+ * │        │   │   │   │   │   │   │Vx │V- │V+ │   │U MODE│   │   │
  * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴──┬┴──┬┴──┬───┼───┼───┤
  * │    │    │    │                        │   │   │   │   │   │   │
  * └────┴────┴────┴────────────────────────┴───┴───┴───┴───┴───┴───┘
@@ -114,8 +116,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ____65_ADJUST______________ROW4    _______,          _______, _______, _______, _______, _______, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, UC_MOD,  _______, _______
 #define ____65_ADJUST______________ROW5    _______, _______, _______,                            _______,                   _______, _______, _______, _______, _______, _______
 
-#define ____65_ADJUST__________RGB_ROW2    _______, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, RGB_SPI, RGB_SPD, _______, _______, RESET,   _______
-#define ____65_ADJUST__________RGB_ROW3    _______, RGB_M_P, RGB_M_B, _______, _______, _______, _______, _______, _______, _______, _______, _______,          EEP_RST, _______
+#define ____65_ADJUST__________RGB_ROW2    _______, RGB_TOG, RGB_MOD, RGB_HUD, RGB_HUI, RGB_SAD, RGB_SAI, RGB_VAD, RGB_VAI, _______, _______, _______, _______, RESET,   _______
+#define ____65_ADJUST__________RGB_ROW3    _______, RGB_SPD, RGB_SPI, RGB_M_P, RGB_M_B, _______, _______, _______, _______, _______, _______, _______,          EEP_RST, _______
 
 #define ____65_ADJUST___________BL_ROW2    _______, BL_TOGG, BL_BRTG, BL_STEP, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET,   _______
 
