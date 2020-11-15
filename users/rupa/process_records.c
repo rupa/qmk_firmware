@@ -48,8 +48,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return u_xp(is_shifted, "ᙙᙖ", "ଳ");
             case CATS:
                 return u_xp(is_shifted, "ⓛ ᆽ ⓛ ", "ㅇㅅㅇ");
-            case DANCE:
-                return u_x(dance(is_shifted));
+            case DANCEL:
+                return u_x(dance(true));
+            case DANCER:
+                return u_x(dance(false));
             case DICE:
                 return u_x(d6());
             case DOMO:

@@ -26,15 +26,20 @@ const uint32_t PROGMEM unicode_map[] = {
     [CENT] = 0x00A2,  // ¢
     [CHEK] = 0x2713,  // ✓
     [CKEY] = 0x20E3,  // COMBINING KEYCAP  ⃣
+    [CLEF] = 0x1D11E, // 𝄞
     [CPRT] = 0x00A9,  // ©
     [CUI]  = 0x26A0,  // ⚠
     [ECKS] = 0x2716,  // ✖
     [EFF]  = 0x017F,  // ſ
+    [EURO] = 0x20AC,  // €
+    [FRWN] = 0x2639,  // ☹
     [HAS]  = 0x262D,  // ☭
     [HUN]  = 0x1F4AF, // 💯
     [IBNG] = 0x203D,  // ‽
-    [IRNY] = 0x2E2E,  // ⸮
     [INTR] = 0x2229,  // ∩
+    [IRNY] = 0x2E2E,  // ⸮
+    [IQMK] = 0x00A1,  // ¿
+    [IXCL] = 0x00BF,  // ¡
     [LALL] = 0x2200,  // ∀
     [LELM] = 0x2208,  // ∈
     [LEXI] = 0x2203,  // ∃
@@ -47,6 +52,10 @@ const uint32_t PROGMEM unicode_map[] = {
     [NOPE] = 0x1F6AB, // 🚫
     [NUM]  = 0x2116,  // №
     [OM]   = 0x0950,  // ॐ
+    [PTDN] = 0x261F,  // ☟
+    [PTLT] = 0x261C,  // ☜
+    [PTRT] = 0x261E,  // ☞
+    [PTUP] = 0x261D,  // ☝
     [RTMK] = 0x00AE,  // ®
     [SMB]  = 0x263A,  // ☻
     [SMW]  = 0x263B,  // ☺
@@ -54,6 +63,8 @@ const uint32_t PROGMEM unicode_map[] = {
     [STOP] = 0x26D4,  // ⛔
     [STW]  = 0x2606,  // ☆
     [TDMK] = 0x2122,  // ™
+    [THUD] = 0x1F44E, // 👎
+    [THUP] = 0x1F44D, // 👍
     [UNIO] = 0x222A,  // ∪
 };
 #endif
@@ -61,12 +72,12 @@ const uint32_t PROGMEM unicode_map[] = {
 const char *d6_map[] = {
     "⚀", "⚁", "⚂", "⚃", "⚄", "⚅"
 };
-const char *dance_map[] = {
+const char *dance_l_map[] = {
     "〜(￣▽￣〜)",
-    "(〜￣▽￣)〜"
+    "ƪ(˘⌣˘)┐"
 };
-const char *dance_more_map[] = {
-    "ƪ(˘⌣˘)┐",
+const char *dance_r_map[] = {
+    "(〜￣▽￣)〜",
     "┌(˘⌣˘)ʃ"
 };
 const char *flip_map[] = {
@@ -101,11 +112,12 @@ const char *choice(const char *choices[], int size) {
 const char *d6(void) {
     return choice(d6_map, 6);
 }
-const char *dance(bool more) {
-    if (more) {
-        return choice(dance_more_map, 2);
+const char *dance(bool widdershins) {
+    if (widdershins) {
+        return choice(dance_l_map, 2);
+    } else {
+        return choice(dance_r_map, 2);
     }
-    return choice(dance_map, 2);
 }
 const char *flip(bool flip_back) {
     if (flip_back) {

@@ -24,15 +24,20 @@ enum unicode_names {
     CENT, // ¢
     CHEK, // ✓
     CKEY, // COMBINING  ⃣
+    CLEF, // 𝄞
     CPRT, // ©
     CUI,  // ⚠
     ECKS, // ✖
     EFF,  // ſ
+    EURO, // €
+    FRWN, // ☹
     HAS,  // ☭
     HUN,  // 💯
     IBNG, // ‽
     INTR, // ∩
+    IQMK, // ¿
     IRNY, // ⸮
+    IXCL, // ¡
     LALL, // ∀
     LELM, // ∈
     LEXI, // ∃
@@ -45,6 +50,10 @@ enum unicode_names {
     NOPE, // 🚫
     NUM,  // №
     OM,   // ॐ
+    PTDN, // ☟
+    PTLT, // ☜
+    PTRT, // ☞
+    PTUP, // ☝
     RTMK, // ®
     SMB,  // ☻
     SMW,  // ☺
@@ -52,6 +61,8 @@ enum unicode_names {
     STOP, // ⛔
     STW,  // ☆
     TDMK, // ™
+    THUD, // 👎
+    THUP, // 👍
     UNIO, // ∪
 };
 #endif
